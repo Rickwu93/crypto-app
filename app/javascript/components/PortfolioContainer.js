@@ -37,13 +37,27 @@ class PortfolioContainer extends Component {
 
     handleSelect(e){
       e.preventDefault()
+      const id = e.target.getAttribute('data-id')
+      //filter to check if the item id is equal to selected items id
+      const activeCurrency = this.state.search_results.filter( item => item.id == parseInt(id))
+      this.setState({
+        active_currency: activeCurrency[0],
+        search_results: []
+      })
     }
 
   render(){
+    //if we have an active currency we show calculate form otherwise show search form
+    const searchOrCalculate = this.state.active_currency ? <Calculate/> : 
+    <Search 
+    handleSelect={this.handleSelect} 
+    searchResults={this.state.search_results} 
+    handleChange={this.handleChange}/>
+
+
     return(
       <div>
-      <Search handleSelect={this.handleSelect} searchResults={this.state.search_results} handleChange={this.handleChange}/>
-      <Calculate/>
+      {searchOrCalculate}
       </div>
     )
   }
