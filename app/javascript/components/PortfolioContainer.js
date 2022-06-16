@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Search from './Search'
+import Calculate from './Calculate'
 
 class PortfolioContainer extends Component {
   constructor(props){
@@ -12,4 +14,15 @@ class PortfolioContainer extends Component {
       amount: ''
     }
   }
+
+  render(){
+    return(
+      <div>
+      <Search/>
+      <Calculate/>
+      </div>
+    )
+  }
 }
+
+export default PortfolioContainer
