@@ -10,4 +10,4 @@ https://github.com/zayneio/cryptocurrency-calculator
 
 * Crypto API is currently down 
 
-![sample](./docs/images/example.png)
+![sample](app/docs/images/example.png)
