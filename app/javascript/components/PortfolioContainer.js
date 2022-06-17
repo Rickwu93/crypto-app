@@ -8,7 +8,6 @@ class PortfolioContainer extends Component {
     super(props)
 
     this.state = {
-      name: '',
       portfolio: [],
       search_result: [],
       active_currency: null,
@@ -17,6 +16,8 @@ class PortfolioContainer extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAmount = this.handleAmount.bind(this)
   }
   //when input field changes, it modifies our state
   handleChange(e){
@@ -24,6 +25,7 @@ class PortfolioContainer extends Component {
       search: e.target.value
     })
     .then((data) => {
+      console.log(data)
         this.setState({
       search_results: [...data.data.currencies]
     })
@@ -32,7 +34,6 @@ class PortfolioContainer extends Component {
     .catch( (data) => {
       debugger
     })
-    console.log(this.state.name)
   }
 
     handleSelect(e){
@@ -46,9 +47,43 @@ class PortfolioContainer extends Component {
       })
     }
 
+    handleSubmit(e){
+      e.preventDefault()
+
+      let currency = this.state.active_currency
+      let amount = this.state.amount
+      axios.post('http://localhost:3000/calculate', {
+        id: currency.id,
+        amount: amount
+      })
+      .then( (data) => {
+        this.setState({
+          amount: '',
+          active_currency: null,
+          portfolio: [...this.state.portfolio, data.data]
+        })
+      })
+      .catch( (data) => {
+        debugger
+      })
+
+    }
+
+    handleAmount(e){
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
+
   render(){
     //if we have an active currency we show calculate form otherwise show search form
-    const searchOrCalculate = this.state.active_currency ? <Calculate/> : 
+    const searchOrCalculate = this.state.active_currency ? 
+    <Calculate
+      handleChange={this.handleAmount}
+      handleSubmit={this.handleSubmit}
+      activeCurrency={this.state.active_currency}
+      amount={this.state.amount}
+    /> : 
     <Search 
     handleSelect={this.handleSelect} 
     searchResults={this.state.search_results} 
