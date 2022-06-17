@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Crypto app is for education purposes and is a follow along project from:
 
-Things you may want to cover:
+https://youtu.be/dpYPLUO3QcI
 
-* Ruby version
+https://github.com/zayneio/cryptocurrency-calculator
 
-* System dependencies
+* Using React frontend and Ruby backend
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Crypto API is currently down 
