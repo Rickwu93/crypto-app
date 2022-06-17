@@ -9,3 +9,5 @@ https://github.com/zayneio/cryptocurrency-calculator
 * Using React frontend and Ruby backend
 
 * Crypto API is currently down 
+
+![sample](./docs/images/example.png)
