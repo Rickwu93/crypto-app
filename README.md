@@ -2,7 +2,7 @@
 
 This Crypto app is for education purposes and is a follow along project from:
 
-https://youtu.be/dpYPLUO3QcI
+
 
 https://github.com/zayneio/cryptocurrency-calculator
 
